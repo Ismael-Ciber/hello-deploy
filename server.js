@@ -77,7 +77,7 @@ app.get("/profile", middlewareAuth, (req, res) => {
 
 app.get("/recon", middlewareAuth, (req, res) => {
     if (req.user.username !== "Ismael-Ciber") {
-        return res.status(403).send("Access denied");
+        return res.status(403).send("Aceso denegado, no eres el usuario permitido");
     }
     res.sendFile(__dirname + "/public/recon.html");
 });
