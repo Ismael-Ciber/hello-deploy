@@ -76,8 +76,12 @@ app.get("/profile", middlewareAuth, (req, res) => {
 })
 
 app.get("/recon", middlewareAuth, (req, res) => {
+    if (req.user.username !== "Ismael-Ciber") {
+        return res.status(403).send("Access denied");
+    }
     res.sendFile(__dirname + "/public/recon.html");
-})
+});
+
 
 app.get("/run-command", middlewareAuth, (req, res) => {
     exec("touch test", (error, stdout, stderr) => {
